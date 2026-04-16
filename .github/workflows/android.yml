@@ -1,26 +1,24 @@
-name: Android CI
+name: vProfile CI/CD Pipeline
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+On:
+   push:
+     branches: [ main ]
+   workflow_dispatch:
 
 jobs:
-  build:
-
+  test:
+    name: Test the Pipeline
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: set up JDK 11
-      uses: actions/setup-java@v4
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: gradle
+      - name: checkout code
+        uses: actions/@v4
 
-    - name: Grant execute permission for gradlew
+      - name: Print a message
+        run: echo @Pipeline IS running!""
+
+      - name: List project files
+        run: ls -la
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
