@@ -34,6 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
 
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -78,3 +79,4 @@ jobs:
 
       - name: Deployment complete
         run: echo "Deployed ${{ env.VERSION_LABEL }} to Beanstalk!"
+        
